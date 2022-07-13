@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "XlsxFileMerger": {
+      "commandName": "Project",
+      "commandLineArgs": "\"D:/OneDrive/Shared/Remco/balans per maand/\" --noheader"
+    }
+  }
+}
