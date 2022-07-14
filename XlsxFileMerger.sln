@@ -5,16 +5,32 @@ VisualStudioVersion = 17.2.32519.379
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExcelMerger", "XlsxFileMerger\ExcelMerger.csproj", "{870FB160-EBC9-4EB8-91DC-151188940EE8}"
 EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "ExcelMerger.Setup", "ExcelMerger.Setup\ExcelMerger.Setup.wixproj", "{65AA3E16-C824-474C-8C66-3EBDD3527BEA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{870FB160-EBC9-4EB8-91DC-151188940EE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{870FB160-EBC9-4EB8-91DC-151188940EE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{870FB160-EBC9-4EB8-91DC-151188940EE8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{870FB160-EBC9-4EB8-91DC-151188940EE8}.Debug|x86.Build.0 = Debug|Any CPU
 		{870FB160-EBC9-4EB8-91DC-151188940EE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{870FB160-EBC9-4EB8-91DC-151188940EE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{870FB160-EBC9-4EB8-91DC-151188940EE8}.Release|x86.ActiveCfg = Release|Any CPU
+		{870FB160-EBC9-4EB8-91DC-151188940EE8}.Release|x86.Build.0 = Release|Any CPU
+		{65AA3E16-C824-474C-8C66-3EBDD3527BEA}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{65AA3E16-C824-474C-8C66-3EBDD3527BEA}.Debug|Any CPU.Build.0 = Debug|x86
+		{65AA3E16-C824-474C-8C66-3EBDD3527BEA}.Debug|x86.ActiveCfg = Debug|x86
+		{65AA3E16-C824-474C-8C66-3EBDD3527BEA}.Debug|x86.Build.0 = Debug|x86
+		{65AA3E16-C824-474C-8C66-3EBDD3527BEA}.Release|Any CPU.ActiveCfg = Release|x86
+		{65AA3E16-C824-474C-8C66-3EBDD3527BEA}.Release|Any CPU.Build.0 = Release|x86
+		{65AA3E16-C824-474C-8C66-3EBDD3527BEA}.Release|x86.ActiveCfg = Release|x86
+		{65AA3E16-C824-474C-8C66-3EBDD3527BEA}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

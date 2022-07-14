@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WixLocalization Culture="en-us" xmlns="http://schemas.microsoft.com/wix/2006/localization">
+
+	<String Id="Author">XGames105</String>
+	<String Id="ProductName">Excel merger</String>
+	<String Id="ProductDescription">A program that mergers 2 excel documents</String>
+	<String Id="DowngradeErrorMessage">A newer version of Excel merger is already installed.</String>
+	
+	
+	<String Id="UnfriendlyProductName">ExcelMerger</String>
+	<String Id="SourceFiles">..\XlsxFileMerger\bin\publish\net6.0</String>
+</WixLocalization>

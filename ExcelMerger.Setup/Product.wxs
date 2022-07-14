@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	
+	<?define BuildVersion = 1.1.0 ?>
+	<?define BuildVersionId = "{4B7F5D36-7C15-44A7-A735-2B35FD4A5D79}" ?>
+	
+
+	<Product
+		Version="$(var.BuildVersion)"
+		Manufacturer="!(loc.Author)"
+		Name="!(loc.ProductName)"
+		Id="$(var.BuildVersionId)"
+		Language="1033"
+		UpgradeCode="D2DF51D1-24FA-4BF0-A12F-937E60DBA8EE">
+		
+		<Package
+			InstallerVersion="200"
+			Compressed="yes"
+			InstallScope="perMachine"
+			Manufacturer="!(loc.Author)"
+			Description="!(loc.ProductDescription)"
+			Languages="1033"/>
+
+		<MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeErrorMessage)" />
+		<MediaTemplate
+			EmbedCab="yes"/>
+
+
+		<!--Config files directory-->
+		<PropertyRef Id="WIX_SUITE_PERSONAL"/>
+
+		<WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectDir)\Assets\License.rtf"/>
+		
+		<UIRef Id="WixUI_InstallDir" />
+		<Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+		
+
+		<Feature Id="ProductFeature" Title="ExcelMerger.Setup" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+		</Feature>
+
+		
+	</Product>
+ 
+
+
+
+
+</Wix>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+	 xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+			<ComponentRef Id="CoreComponent"/>
+			<ComponentRef Id="AddToPathComponent"/>
+		</ComponentGroup>
+
+
+		<DirectoryRef Id="INSTALLFOLDER" FileSource="!(loc.SourceFiles)">
+
+			<Component Id="CoreComponent" Guid="{88F9CE73-303D-45E6-A2DD-4C6506EBE733}">
+				<File Name="ExcelMerger.exe" Id="MAINEXE"/>
+			</Component>
+
+			<Component Id="AddToPathComponent" Guid="{CC069153-8A12-4D93-A9CE-FF14217F6A0C}" KeyPath="yes">
+				<Environment Id="PATH" Name="PATH" Value="[INSTALLFOLDER]" Permanent="no" Part="last" Action="set" System="yes" />
+			</Component>
+		</DirectoryRef>
+
+
+	</Fragment>
+</Wix>
