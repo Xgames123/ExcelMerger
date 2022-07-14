@@ -44,11 +44,14 @@ public static class FileMerger
 
 			
 		}
+
+		var firstSourceColumnsSorted = SortColumns(firstSourceColumns);
+
 		int end = 1;
 		if (addHeader)
 			end = 2;
-		var contentToIndexDict = MergeColumnsAndBuildCTIDict(firstSourceColumns.ToArray(), destSheet.Column(1), end);
-		CopyData(workSheets, destSheet, contentToIndexDict);
+		var contentToIndexDict = MergeColumnsAndBuildCTIDict(firstSourceColumnsSorted.ToArray(), destSheet.Column(1), end);
+		CopyData(workSheets, destSheet, contentToIndexDict, addHeader);
 
 
 		workbooks.ForEach((book) => book.Dispose());
@@ -98,6 +101,46 @@ public static class FileMerger
 		}
 		return books;
 
+	}
+
+	private static List<IXLColumn> SortColumns(List<IXLColumn> input)
+	{
+		ConsoleWriter.WriteLineStatus("Sorting columns...");
+
+		var output = new List<IXLColumn>(input.Count);
+
+		var unsortedColumns = new IXLColumn[input.Count];
+		input.CopyTo(unsortedColumns);
+
+		
+		var unsortedColumnCount = unsortedColumns.Length;
+		while(unsortedColumnCount > 0)
+		{
+			IXLColumn biggestCol = null;
+			var biggestColSize = -1;
+			var biggestColIndex = -1;
+			for (int i = 0; i < unsortedColumns.Length; i++)
+			{
+				var col = unsortedColumns[i];
+				if (col == null)
+					continue;
+
+				var colSize = col.LastCellUsed().Address.RowNumber;
+				if (colSize > biggestColSize)
+				{
+					biggestColSize = colSize;
+					biggestCol = col;
+					biggestColIndex = i;
+				}
+
+			}
+			output.Add(biggestCol);
+			unsortedColumns[biggestColIndex] = null;
+			unsortedColumnCount--;
+
+		}
+
+		return output;
 	}
 
 
@@ -161,7 +204,7 @@ public static class FileMerger
 
 	
 
-	private static void CopyData(List<IXLWorksheet> sheets, IXLWorksheet dest, Dictionary<string, int> contentToIndexDict)
+	private static void CopyData(List<IXLWorksheet> sheets, IXLWorksheet dest, Dictionary<string, int> contentToIndexDict, bool addHeader)
 	{
 		ConsoleWriter.WriteLineStatus("Copying data...");
 
@@ -173,8 +216,11 @@ public static class FileMerger
 			var dataCol = sheet.Column(2);
 
 			var fileName = Path.GetFileName(c_workbookToFilenameDict[sheet.Workbook]);
-			dest.Cell(1, destIndex).Value = fileName;
-
+			if (addHeader)
+			{
+				dest.Cell(1, destIndex).Value = fileName;
+			}
+			
 
 			foreach (var cell in dataCol.CellsUsed())
 			{
